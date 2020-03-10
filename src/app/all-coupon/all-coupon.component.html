@@ -18,7 +18,7 @@
             <h5>PLEASE SELECT STORE</h5>
         </label>
         <select class="form-control" [(ngModel)]="selectedStore" (change)="loadCoupons(selectedStore,$event)">
-            <option [value]="data.value._id" *ngFor="let data of storeArray | keyvalue">
+            <option [value]="data.value.storeURL" *ngFor="let data of storeArray | keyvalue">
                 {{data.value.name}}
             </option>
         </select>
@@ -169,7 +169,7 @@
                             <div>
                                 <select id="select1" class="form-control" name="storeId" required
                                     [(ngModel)]="editObject.storeId" (change)="fetchTrackingLink(editObject.storeId)">
-                                    <option [value]="item.value._id" *ngFor="let item of storeArray | keyvalue">
+                                    <option [value]="item.value.storeURL" *ngFor="let item of storeArray | keyvalue">
                                         {{item.value.name}}
                                     </option>
                                 </select>

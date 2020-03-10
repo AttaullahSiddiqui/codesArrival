@@ -46,9 +46,9 @@ export class AddStoreComponent implements OnInit {
       }
       if (data) {
         if (!storeInfo.editorChoice) storeInfo.editorChoice = false
-        if (!storeInfo.topStore) storeInfo.topStore = false
+        if (!storeInfo.topStore) storeInfo.topStore = false;
         storeInfo.img = data;
-        storeInfo.storeURL = storeInfo.name.replace(/ /g, '-');
+        storeInfo.storeURL = storeInfo.name.replace(/ /g, '-').toLowerCase();
         self.saveStoreToDB(storeInfo)
       }
     }).subscribe()

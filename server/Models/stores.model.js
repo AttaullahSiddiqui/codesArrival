@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 
 let storeSchema = mongoose.Schema({
     name: { type: String, required: true },
-    storeURL: { type: String, required: true },
+    storeURL: { type: String, required: true, unique: true },
     heading: { type: String, required: true },
     categoryRef: { type: Array, required: true },
     shortDes: { type: String, required: true },

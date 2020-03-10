@@ -44,7 +44,7 @@
                                 <select class="form-control form-control-lg" [disabled]="!stores" name="assignedStore"
                                     [(ngModel)]="couponInfo.storeId" (change)="fetchTrackingLink(couponInfo.storeId)"
                                     required>
-                                    <option [value]="item.value._id" *ngFor="let item of stores | keyvalue">
+                                    <option [value]="item.value.storeURL" *ngFor="let item of stores | keyvalue">
                                         {{item.value.name}}
                                     </option>
                                 </select>

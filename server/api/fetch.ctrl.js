@@ -30,7 +30,7 @@ function fetchCategories(req, res) {
 }
 
 function fetchStoresOnlyId(req, res) {
-    Store.find({}, 'name _id', function (err, stores) {
+    Store.find({}, 'name storeURL', function (err, stores) {
         if (err) res.json(resHandler.respondError(err[0], err[1] || -1));
         else if (!stores) res.json(resHandler.respondError("No Stores at the moment", -3));
         else res.json(resHandler.respondSuccess(stores, "Stores fetched successfully", 2));
@@ -50,10 +50,10 @@ function fetchStoresWithLimit(req, res) {
         });
 }
 function fetchStoreById(req, res) {
-    Store.findById(req.query._id, function (err, store) {
+    Store.findOne({ storeURL: req.query._id }, function (err, store) {
         if (err) res.json(resHandler.respondError(err[0], err[1] || -1));
-        else if (store.length) res.json(resHandler.respondError("No such Store at the moment", -3));
-        else res.json(resHandler.respondSuccess(store, "", 2));
+        else if (store) res.json(resHandler.respondSuccess(store, "", 2))
+        else res.json(resHandler.respondError("Unable to fetch tracking link", -3));
     })
 }
 function fetchCouponsById(req, res) {
